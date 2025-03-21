@@ -22,7 +22,7 @@
     {
         public override string ModuleName => "[AntiDLL] BanModule";
 
-        public override string ModuleVersion => "1.1";
+        public override string ModuleVersion => "1.2";
 
         public override string ModuleAuthor => "verneri";
 
@@ -34,6 +34,8 @@
 
         private void OnDetection(CCSPlayerController player, string eventName)
         {
+            if (player == null || !player.IsValid) return;
+
             base.Logger.LogInformation("Player {0} detected violating {1}", player.PlayerName, eventName);
 
             if (!this.Punishedplayers.Contains(player.SteamID))
